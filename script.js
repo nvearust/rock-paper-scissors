@@ -35,3 +35,51 @@ function getHumanChoice() {
         return getHumanChoice();
     }
 }
+
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound() {
+    let computerChoice = getComputerChoice();
+    let humanChoice = getHumanChoice();
+
+    console.log(`Human chooses: ${humanChoice}`);
+    console.log(`Computer chooses: ${computerChoice}`);
+
+    if (computerChoice === humanChoice) {
+        console.log("It's a tie!");
+        return 0;
+    }
+
+    if (
+        (computerChoice === "rock" && humanChoice === "scissors") ||
+        (computerChoice === "paper" && humanChoice === "rock") ||
+        (computerChoice === "scissors" && humanChoice === "paper")
+    ) {
+        console.log("Computer won the round!");
+        computerScore++;
+    } else {
+        console.log("Human won the round!");
+        humanScore++;
+    }
+
+    console.log(`Score: Human ${humanScore} - Computer ${computerScore}`);
+}
+
+
+
+function playGame() {
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+    if (computerScore > humanScore) {
+        console.log("Computer won the game!");
+    }
+    else {
+        console.log("Human won the game!");
+    }
+}
+
+playGame()
