@@ -6,14 +6,32 @@ function getComputerChoice() {
     let choice;
 
     if (randomInt === 1) {
-        choice = "rock"
+        choice = "rock";
     }
     if (randomInt === 2) {
-        choice = "paper"
+        choice = "paper";
     }
     if (randomInt === 3) {
-        choice = "scissors"
+        choice = "scissors";
     }
     // return the computer choice!
-    return choice
+    return choice;
+}
+
+function getHumanChoice() {
+    let humanChoice = prompt("Rock, Paper, or Scissors?");
+    
+    if (humanChoice.toLowerCase() === "rock") {
+        return "rock";
+    } 
+    else if (humanChoice.toLowerCase() === "paper") {
+        return "paper";
+    } 
+    else if (humanChoice.toLowerCase() === "scissors") {
+        return "scissors";
+    } 
+    else {
+        console.log("invalid choice");
+        return getHumanChoice();
+    }
 }
