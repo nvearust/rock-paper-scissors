@@ -18,26 +18,39 @@ function getComputerChoice() {
     return choice;
 }
 
-function getHumanChoice() {
-    let humanChoice = prompt("Rock, Paper, or Scissors?");
-    
-    if (humanChoice.toLowerCase() === "rock") {
-        return "rock";
-    } 
-    else if (humanChoice.toLowerCase() === "paper") {
-        return "paper";
-    } 
-    else if (humanChoice.toLowerCase() === "scissors") {
-        return "scissors";
-    } 
-    else {
-        console.log("invalid choice");
-        return getHumanChoice();
-    }
-}
-
 let humanScore = 0;
 let computerScore = 0;
+
+// get the rock, paper and scissors button elements
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+
+// Result containers
+const resultContainer = document.createElement("div");
+const humanChoiceDisplay = document.createElement("p");
+const computerChoiceDisplay = document.createElement("p");
+const roundResultDisplay = document.createElement("p");
+const scoreDisplay = document.createElement("div");
+const humanScoreDisplay = document.createElement("div");
+const computerScoreDisplay = document.createElement("div");
+
+
+humanChoiceDisplay.textContent = "Human Choice: ";
+computerChoiceDisplay.textContent = "Computer Choice: ";
+roundResultDisplay.textContent = "Result: ";
+humanScoreDisplay.textContent = `Human Score: ${humanScore}`;
+computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
+
+scoreDisplay.appendChild(humanScoreDisplay);
+scoreDisplay.appendChild(computerScoreDisplay);
+
+resultContainer.appendChild(humanChoiceDisplay);
+resultContainer.appendChild(computerChoiceDisplay);
+resultContainer.appendChild(roundResultDisplay);
+resultContainer.appendChild(scoreDisplay);
+
+document.body.appendChild(resultContainer);
 
 function playRound() {
     let computerChoice = getComputerChoice();
@@ -68,18 +81,6 @@ function playRound() {
 
 
 
-function playGame() {
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    if (computerScore > humanScore) {
-        console.log("Computer won the game!");
-    }
-    else {
-        console.log("Human won the game!");
-    }
-}
-
-playGame()
+rock.addEventListener("click", () => playRound("rock"));
+paper.addEventListener("click", () => playRound("paper"));
+scissors.addEventListener("click", () => playRound("scissors"));
